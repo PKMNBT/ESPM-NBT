@@ -1,58 +1,163 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#084e4b">
-<meta name="description" content="E-PUSBONAT — Portal monitoring pelayanan Puskesmas Naibonat.">
-<title>Dashboard | E-PUSBONAT</title>
-<link rel="stylesheet" href="assets/css/epusbonat.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f83">
+  <title>E-PUSBONAT | Puskesmas Naibonat</title>
+  <meta name="description" content="Portal pemantauan layanan Puskesmas Naibonat.">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-<body data-page="dashboard">
-<div class="app">
-<div class="backdrop" aria-hidden="true"></div>
-<aside class="sidebar" aria-label="Navigasi utama">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">E</span><span><span class="brand-name">E-PUSBONAT</span><br><span class="brand-sub">Puskesmas Naibonat</span></span>
-  </a>
-  <div class="nav-label">MENU UTAMA</div>
-  <nav class="nav">
-    <a class="nav-link" data-page="dashboard" href="index.html"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
-    <a class="nav-link" data-page="spm" href="spm/index.html"><span class="nav-icon">▦</span><span>SPM</span></a>
-    <a class="nav-link" data-page="klaster" href="klaster/index.html"><span class="nav-icon">✦</span><span>Klaster Pelayanan</span></a>
-  </nav>
-  <div class="side-bottom">
-    <div class="side-note"><strong>PORTAL LAYANAN TERPADU</strong>Monitoring dan informasi pelayanan dalam satu tampilan yang terstruktur.</div>
-    <div class="motto">KAMI SIAP MELAYANI ANDA DENGAN RAPI.</div>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">EP</div>
+        <div>
+          <div class="brand-name">E-PUSBONAT</div>
+          <div class="brand-subtitle">PUSKESMAS NAIBONAT</div>
+        </div>
+      </div>
+
+      <div class="sidebar-label">MENU UTAMA</div>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">▦</span><span>DASHBOARD</span></button>
+        <button class="nav-item" data-page="spm"><span class="nav-icon">◫</span><span>SPM</span><span class="nav-count">12</span></button>
+        <button class="nav-item" data-page="klaster"><span class="nav-icon">◇</span><span>KLASTER PELAYANAN</span><span class="chevron">⌄</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="side-status"><span class="status-dot"></span><span>Mode statis · GitHub Pages</span></div>
+        <div class="motto">KAMI SIAP MELAYANI ANDA DENGAN RAPI.</div>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+        <div class="breadcrumb"><span>EPUSBONAT</span><span class="crumb-slash">/</span><strong id="breadcrumbCurrent">Dashboard</strong></div>
+        <div class="topbar-right">
+          <div class="date-chip"><span class="date-dot"></span><span id="todayLabel">Memuat tanggal…</span></div>
+          <div class="avatar" title="Puskesmas Naibonat">PN</div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="page-view active" id="page-dashboard">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">PUSAT MONITORING PELAYANAN</div>
+              <h1>Dashboard <span class="title-accent">Overview</span></h1>
+              <p class="page-subtitle">Pantau ringkasan indikator dan aktivitas layanan dalam satu tampilan.</p>
+            </div>
+            <div class="heading-actions">
+              <button class="btn btn-secondary" id="refreshDashboard">↻ Perbarui Tampilan</button>
+              <button class="btn btn-primary" data-go="spm">Kelola Data SPM <span>→</span></button>
+            </div>
+          </div>
+
+          <div class="notice notice-info"><span class="notice-icon">i</span><div><strong>Ruang kerja baru</strong><p>Angka akan berubah setelah data dimasukkan. Data tersimpan di browser yang sedang digunakan, bukan di server bersama.</p></div></div>
+
+          <div class="stat-grid">
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-label">INDIKATOR SPM</span><span class="stat-icon icon-teal">◫</span></div>
+              <div class="stat-value" id="statIndicators">12</div>
+              <div class="stat-foot"><span class="foot-neutral">Standar pelayanan</span><span class="mini-line teal-line">▂▅▃▆▅▇</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-label">TOTAL SASARAN</span><span class="stat-icon icon-blue">◎</span></div>
+              <div class="stat-value" id="statTarget">0</div>
+              <div class="stat-foot"><span class="foot-neutral">Akumulasi data SPM</span><span class="mini-line blue-line">▂▃▅▄▆▇</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-label">TOTAL CAPAIAN</span><span class="stat-icon icon-orange">↗</span></div>
+              <div class="stat-value" id="statAchieved">0</div>
+              <div class="stat-foot"><span class="foot-neutral">Akumulasi capaian</span><span class="mini-line orange-line">▂▄▃▅▄▆</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-label">CAPAIAN AGREGAT</span><span class="stat-icon icon-purple">％</span></div>
+              <div class="stat-value" id="statPercent">0<span class="value-unit">%</span></div>
+              <div class="stat-foot"><span class="foot-neutral">Capaian ÷ sasaran</span><span class="mini-line purple-line">▂▃▄▃▅▆</span></div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel performance-panel">
+              <div class="panel-heading">
+                <div><h2>Ringkasan Capaian SPM</h2><p>Ikhtisar capaian per indikator</p></div>
+                <button class="text-button" data-go="spm">Lihat semua <span>→</span></button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>INDIKATOR</th><th>SASARAN</th><th>CAPAIAN</th><th>PROGRES</th></tr></thead>
+                  <tbody id="dashboardSpmRows"></tbody>
+                </table>
+              </div>
+              <div class="empty-note" id="dashboardEmpty">Belum ada capaian yang dimasukkan. Buka menu SPM untuk mengisi sasaran dan capaian.</div>
+            </section>
+            <section class="panel quick-panel">
+              <div class="panel-heading"><div><h2>Akses Cepat</h2><p>Menu kerja utama</p></div><span class="panel-more">•••</span></div>
+              <button class="quick-link" data-go="spm"><span class="quick-icon teal-bg">◫</span><span class="quick-copy"><strong>Kelola Indikator SPM</strong><small>Tambah dan perbarui data indikator</small></span><span class="quick-arrow">↗</span></button>
+              <button class="quick-link" data-go="klaster"><span class="quick-icon blue-bg">◇</span><span class="quick-copy"><strong>Klaster Pelayanan</strong><small>Jelajahi 5 kelompok layanan</small></span><span class="quick-arrow">↗</span></button>
+              <div class="quick-tip"><div class="tip-spark">✦</div><div><strong>Catatan pengelolaan</strong><p>Ekspor cadangan JSON secara berkala agar data browser tidak hilang saat perangkat atau browser dibersihkan.</p></div></div>
+            </section>
+          </div>
+          <div class="footer-line"><span>E-PUSBONAT · Puskesmas Naibonat</span><span>Portal monitoring pelayanan</span></div>
+        </section>
+
+        <section class="page-view" id="page-spm">
+          <div class="page-heading">
+            <div><div class="eyebrow">STANDAR PELAYANAN MINIMAL</div><h1>Kelola <span class="title-accent">SPM</span></h1><p class="page-subtitle">Kelola sasaran dan capaian untuk 12 indikator pelayanan kesehatan.</p></div>
+            <div class="heading-actions"><button class="btn btn-secondary" id="exportCsv">↓ Ekspor CSV</button><button class="btn btn-primary" id="addSpm">＋ Tambah Data</button></div>
+          </div>
+          <div class="notice notice-warning"><span class="notice-icon">!</span><div><strong>Catatan penyimpanan</strong><p>Data disimpan secara lokal di browser ini. Ini bukan sistem multi-pengguna dan tidak memiliki autentikasi atau basis data server.</p></div></div>
+          <div class="toolbar">
+            <div class="search-box"><span>⌕</span><input id="spmSearch" type="search" placeholder="Cari indikator…" aria-label="Cari indikator"></div>
+            <div class="toolbar-right"><label class="select-label">Tampilan <select id="spmFilter"><option value="all">Semua indikator</option><option value="entered">Sudah diisi</option><option value="empty">Belum diisi</option></select></label><button class="btn btn-secondary btn-small" id="importJson">↑ Impor JSON</button><input type="file" id="jsonFile" accept=".json,application/json" hidden></div>
+          </div>
+          <section class="panel spm-panel">
+            <div class="table-wrap">
+              <table class="spm-table">
+                <thead><tr><th style="width:54px">NO.</th><th>INDIKATOR PELAYANAN</th><th>SASARAN</th><th>CAPAIAN</th><th>PERSENTASE</th><th>STATUS DATA</th><th>AKSI</th></tr></thead>
+                <tbody id="spmRows"></tbody>
+              </table>
+            </div>
+            <div class="table-bottom"><span id="spmCount">12 indikator</span><span>Data lokal · <button class="text-button" id="exportJson">Unduh cadangan JSON</button></span></div>
+          </section>
+          <div class="footer-line"><span>SPM · 12 indikator pelayanan</span><span>Pastikan data sesuai sumber resmi sebelum pelaporan.</span></div>
+        </section>
+
+        <section class="page-view" id="page-klaster">
+          <div class="page-heading">
+            <div><div class="eyebrow">INTEGRASI LAYANAN KESEHATAN PRIMER</div><h1>Klaster <span class="title-accent">Pelayanan</span></h1><p class="page-subtitle">Pilih kelompok klaster untuk melihat cakupan layanan dan ruang kerja.</p></div>
+          </div>
+          <div class="cluster-hero"><div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div><div class="cluster-hero-content"><span class="hero-tag">LAYANAN TERINTEGRASI</span><h2>Pelayanan kesehatan yang<br>terpadu dan berkesinambungan.</h2><p>Kelompokkan layanan berdasarkan klaster untuk membantu pemantauan kegiatan Puskesmas.</p></div><div class="hero-symbol">✚</div></div>
+          <div class="cluster-grid" id="clusterGrid"></div>
+          <section class="panel cluster-detail" id="clusterDetail">
+            <div class="panel-heading"><div><div class="eyebrow">RUANG KERJA KLASTER</div><h2 id="clusterDetailTitle">Pilih salah satu klaster</h2><p id="clusterDetailDescription">Pilih kartu di atas untuk melihat deskripsi kelompok layanan.</p></div></div>
+            <div class="cluster-detail-body" id="clusterDetailBody"><div class="detail-placeholder"><span>◇</span><p>Belum ada klaster yang dipilih.</p></div></div>
+          </section>
+          <div class="footer-line"><span>Klaster Pelayanan</span><span>Ruang kerja awal · dapat dikembangkan lebih lanjut</span></div>
+        </section>
+      </main>
+    </div>
   </div>
-</aside>
-<main class="main">
-<header class="topbar">
-  <button class="mobile-menu" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
-  <div class="crumb">E-PUSBONAT <span aria-hidden="true"> / </span> <strong>Dashboard</strong></div>
-  <div class="top-actions"><span class="status-pill"><span class="dot"></span> Mode frontend statis</span><span class="avatar" aria-label="Puskesmas Naibonat">PN</span></div>
-</header>
-<section class="content">
 
-<div class="page-head"><div><div class="eyebrow">Pusat kendali pelayanan</div><h1>Dashboard</h1><p>Ringkasan pemantauan pelayanan dan indikator program Puskesmas Naibonat.</p></div><div class="date-chip">◷ <span id="today">Ringkasan monitoring</span></div></div>
-<section class="hero"><span class="hero-tag">E-PUSBONAT · MONITORING TERPADU</span><h2>Data yang tertata. Pelayanan yang lebih terarah.</h2><p>Ruang pemantauan untuk membantu tim melihat indikator, mengenali prioritas, dan menjaga tindak lanjut pelayanan.</p><div class="hero-foot"><span>◈ Terstruktur</span><span>↗ Mudah dipantau</span><span>◎ Responsif untuk perangkat</span></div></section>
-<div class="notice" role="note"><span>ⓘ</span><div><strong>Mode pratinjau statis</strong>Dashboard ini belum terhubung ke database FastAPI. Angka produksi tidak ditampilkan agar tidak menyesatkan. Hubungkan API yang aman sebelum digunakan untuk pelaporan resmi.</div></div>
-<div class="section-row"><div><h2>Ikhtisar indikator</h2><p>Komponen monitoring — menunggu sumber data resmi</p></div><span class="pill orange">Belum terhubung</span></div>
-<div class="grid stats">
-  <article class="stat"><div class="stat-top"><span>Indikator terdaftar</span><span class="stat-icon">▦</span></div><div class="stat-value">—</div><div class="stat-foot">Menunggu integrasi data</div></article>
-  <article class="stat"><div class="stat-top"><span>Indikator tercapai</span><span class="stat-icon">✓</span></div><div class="stat-value">—</div><div class="stat-foot">Belum ada hasil sinkronisasi</div></article>
-  <article class="stat"><div class="stat-top"><span>Perlu perhatian</span><span class="stat-icon">!</span></div><div class="stat-value">—</div><div class="stat-foot">Belum dihitung dari data resmi</div></article>
-  <article class="stat"><div class="stat-top"><span>Periode pelaporan</span><span class="stat-icon">◷</span></div><div class="stat-value" style="font-size:22px">—</div><div class="stat-foot">Pilih periode setelah integrasi</div></article>
-</div>
-<div class="grid two-col">
-  <section class="panel"><h2 class="panel-title">Tren capaian indikator</h2><p class="panel-sub">Visualisasi akan aktif setelah data resmi tersedia.</p><div class="empty-state"><div class="big-icon">⌁</div><h3>Belum ada data tren</h3><p>Grafik tidak menampilkan data simulasi. Hubungkan sumber data yang berwenang untuk menampilkan tren capaian yang valid.</p></div></section>
-  <section class="panel"><h2 class="panel-title">Akses cepat</h2><p class="panel-sub">Buka modul yang ingin ditinjau.</p><div class="grid" style="gap:10px"><a class="cluster-card" style="min-height:0;padding:15px" href="spm/index.html"><div style="display:flex;gap:12px;align-items:center"><span class="stat-icon">▦</span><div><strong>Standar Pelayanan Minimal</strong><div class="muted" style="font-size:11px">Tinjau indikator dan struktur modul</div></div><span style="margin-left:auto;color:var(--teal-700)">↗</span></div></a><a class="cluster-card" style="min-height:0;padding:15px" href="klaster/index.html"><div style="display:flex;gap:12px;align-items:center"><span class="stat-icon">✦</span><div><strong>Klaster Pelayanan</strong><div class="muted" style="font-size:11px">Lihat lima kelompok pelayanan</div></div><span style="margin-left:auto;color:var(--teal-700)">↗</span></div></a></div></section>
-</div>
-
-</section>
-<footer class="footer"><span>© 2026 E-PUSBONAT · Puskesmas Naibonat</span><span>Portal Integrasi Layanan · Tampilan frontend statis</span></footer>
-</main>
-</div>
-<script src="assets/js/app.js" defer></script>
+  <div class="modal-backdrop" id="spmModal" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><div class="eyebrow">FORMULIR DATA</div><h2 id="modalTitle">Tambah Data SPM</h2></div><button class="modal-close" id="closeModal" aria-label="Tutup">×</button></div>
+      <form id="spmForm">
+        <input type="hidden" id="formId">
+        <label class="field-label" for="formIndicator">Indikator pelayanan</label>
+        <select id="formIndicator" required></select>
+        <div class="form-grid"><div><label class="field-label" for="formTarget">Sasaran</label><input type="number" id="formTarget" min="0" step="1" placeholder="0" required></div><div><label class="field-label" for="formAchieved">Capaian</label><input type="number" id="formAchieved" min="0" step="1" placeholder="0" required></div></div>
+        <label class="field-label" for="formNotes">Catatan (opsional)</label><textarea id="formNotes" rows="3" placeholder="Sumber data, periode, atau catatan…"></textarea>
+        <p class="form-hint">Persentase dihitung otomatis dari capaian ÷ sasaran. Pastikan satuan dan periode sasaran/capaian konsisten.</p>
+        <div class="modal-actions"><button type="button" class="btn btn-secondary" id="cancelModal">Batal</button><button type="submit" class="btn btn-primary">Simpan Data</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/app.js"></script>
 </body>
 </html>
