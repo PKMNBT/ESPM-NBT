@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#084e4b">
+<meta name="description" content="E-PUSBONAT — Portal monitoring pelayanan Puskesmas Naibonat.">
+<title>Dashboard | E-PUSBONAT</title>
+<link rel="stylesheet" href="assets/css/epusbonat.css">
+</head>
+<body data-page="dashboard">
+<div class="app">
+<div class="backdrop" aria-hidden="true"></div>
+<aside class="sidebar" aria-label="Navigasi utama">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">E</span><span><span class="brand-name">E-PUSBONAT</span><br><span class="brand-sub">Puskesmas Naibonat</span></span>
+  </a>
+  <div class="nav-label">MENU UTAMA</div>
+  <nav class="nav">
+    <a class="nav-link" data-page="dashboard" href="index.html"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+    <a class="nav-link" data-page="spm" href="spm/index.html"><span class="nav-icon">▦</span><span>SPM</span></a>
+    <a class="nav-link" data-page="klaster" href="klaster/index.html"><span class="nav-icon">✦</span><span>Klaster Pelayanan</span></a>
+  </nav>
+  <div class="side-bottom">
+    <div class="side-note"><strong>PORTAL LAYANAN TERPADU</strong>Monitoring dan informasi pelayanan dalam satu tampilan yang terstruktur.</div>
+    <div class="motto">KAMI SIAP MELAYANI ANDA DENGAN RAPI.</div>
+  </div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <button class="mobile-menu" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+  <div class="crumb">E-PUSBONAT <span aria-hidden="true"> / </span> <strong>Dashboard</strong></div>
+  <div class="top-actions"><span class="status-pill"><span class="dot"></span> Mode frontend statis</span><span class="avatar" aria-label="Puskesmas Naibonat">PN</span></div>
+</header>
+<section class="content">
+
+<div class="page-head"><div><div class="eyebrow">Pusat kendali pelayanan</div><h1>Dashboard</h1><p>Ringkasan pemantauan pelayanan dan indikator program Puskesmas Naibonat.</p></div><div class="date-chip">◷ <span id="today">Ringkasan monitoring</span></div></div>
+<section class="hero"><span class="hero-tag">E-PUSBONAT · MONITORING TERPADU</span><h2>Data yang tertata. Pelayanan yang lebih terarah.</h2><p>Ruang pemantauan untuk membantu tim melihat indikator, mengenali prioritas, dan menjaga tindak lanjut pelayanan.</p><div class="hero-foot"><span>◈ Terstruktur</span><span>↗ Mudah dipantau</span><span>◎ Responsif untuk perangkat</span></div></section>
+<div class="notice" role="note"><span>ⓘ</span><div><strong>Mode pratinjau statis</strong>Dashboard ini belum terhubung ke database FastAPI. Angka produksi tidak ditampilkan agar tidak menyesatkan. Hubungkan API yang aman sebelum digunakan untuk pelaporan resmi.</div></div>
+<div class="section-row"><div><h2>Ikhtisar indikator</h2><p>Komponen monitoring — menunggu sumber data resmi</p></div><span class="pill orange">Belum terhubung</span></div>
+<div class="grid stats">
+  <article class="stat"><div class="stat-top"><span>Indikator terdaftar</span><span class="stat-icon">▦</span></div><div class="stat-value">—</div><div class="stat-foot">Menunggu integrasi data</div></article>
+  <article class="stat"><div class="stat-top"><span>Indikator tercapai</span><span class="stat-icon">✓</span></div><div class="stat-value">—</div><div class="stat-foot">Belum ada hasil sinkronisasi</div></article>
+  <article class="stat"><div class="stat-top"><span>Perlu perhatian</span><span class="stat-icon">!</span></div><div class="stat-value">—</div><div class="stat-foot">Belum dihitung dari data resmi</div></article>
+  <article class="stat"><div class="stat-top"><span>Periode pelaporan</span><span class="stat-icon">◷</span></div><div class="stat-value" style="font-size:22px">—</div><div class="stat-foot">Pilih periode setelah integrasi</div></article>
+</div>
+<div class="grid two-col">
+  <section class="panel"><h2 class="panel-title">Tren capaian indikator</h2><p class="panel-sub">Visualisasi akan aktif setelah data resmi tersedia.</p><div class="empty-state"><div class="big-icon">⌁</div><h3>Belum ada data tren</h3><p>Grafik tidak menampilkan data simulasi. Hubungkan sumber data yang berwenang untuk menampilkan tren capaian yang valid.</p></div></section>
+  <section class="panel"><h2 class="panel-title">Akses cepat</h2><p class="panel-sub">Buka modul yang ingin ditinjau.</p><div class="grid" style="gap:10px"><a class="cluster-card" style="min-height:0;padding:15px" href="spm/index.html"><div style="display:flex;gap:12px;align-items:center"><span class="stat-icon">▦</span><div><strong>Standar Pelayanan Minimal</strong><div class="muted" style="font-size:11px">Tinjau indikator dan struktur modul</div></div><span style="margin-left:auto;color:var(--teal-700)">↗</span></div></a><a class="cluster-card" style="min-height:0;padding:15px" href="klaster/index.html"><div style="display:flex;gap:12px;align-items:center"><span class="stat-icon">✦</span><div><strong>Klaster Pelayanan</strong><div class="muted" style="font-size:11px">Lihat lima kelompok pelayanan</div></div><span style="margin-left:auto;color:var(--teal-700)">↗</span></div></a></div></section>
+</div>
+
+</section>
+<footer class="footer"><span>© 2026 E-PUSBONAT · Puskesmas Naibonat</span><span>Portal Integrasi Layanan · Tampilan frontend statis</span></footer>
+</main>
+</div>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
